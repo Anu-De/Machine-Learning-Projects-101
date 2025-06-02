@@ -2,7 +2,7 @@ IMDB Movie Review Sentiment Analysis
 
 Presented by: CodTech IT Solutions Pvt. Ltd.
 
-Machine Learning Task 1
+Machine Learning Task 2
 
 Intern ID: CT04DN306
 
