@@ -1,8 +1,11 @@
 MovieLens Dataset
 
 Presented by: CodTech IT Solutions Pvt. Ltd.
+
 Machine Learning Task 4
+
 Intern ID: CT04DN306
+
 Dataset Overview
 
 The MovieLens dataset is a widely used dataset for building and evaluating recommender systems. It contains user ratings for movies, providing insights into user preferences and item similarities.
@@ -29,5 +32,7 @@ Notes
 
 Prepared by:
 CodTech IT Solutions Pvt. Ltd.
+
 Machine Learning Task 4
+
 Intern ID: CT04DN306
