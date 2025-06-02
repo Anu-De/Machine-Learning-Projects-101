@@ -1,55 +1,22 @@
-Project Report: Breast Cancer Classification
+### **Conclusion**
 
-1. Dataset Overview
-The dataset used in this project pertains to breast cancer diagnosis, with the primary target variable being diagnosis, categorized as B (Benign) and M (Malignant). The dataset comprised mostly numerical features, with the exception of the diagnosis label.
+In this project, we explored and analyzed the dataset through various visualization techniques, including correlation heatmaps, distribution plots, box-whisker plots, and scatter matrices to understand feature relationships and identify potential outliers. Following data preprocessing steps such as missing value handling, feature scaling, and encoding, we trained three different models: K-Nearest Neighbors (KNN), Support Vector Classifier (SVC), and XGBoost.
 
-2. Data Exploration and Preprocessing  
+Hyperparameter tuning was performed using grid search, leading to the selection of optimal parameters for each model. The evaluation metrics across these models revealed that **XGBoost consistently outperformed KNN and SVC** in terms of accuracy, ROC AUC, and PR AUC. Specifically, the XGBoost model achieved a testing accuracy of **90.48%**, ROC AUC of **0.926**, and PR AUC of **0.958**, indicating excellent discrimination ability and robustness.
 
-    Initial Exploration: Conducted data exploration using isnull(), duplicated(), info(), describe(), and head() to understand data structure and identify missing values or duplicates.
-    Outlier Detection: Outliers were identified and removed using the Interquartile Range (IQR) method.
-    Skewness Handling: Checked skewness for numerical features; applied log transformation to correct skewness and validated the effectiveness post-transformation.
-    Feature Scaling: Transformed numerical columns using StandardScaler to normalize feature ranges.
+Given its superior performance and minimal overfitting, **XGBoost was identified as the best model** for this classification task. Its high feature importance scores further suggest that the model effectively captures relevant patterns in the data, making it suitable for deployment or further analysis.
 
-3. Model Training and Evaluation
-Four different classification algorithms were employed:
+---
 
-    Logistic Regression:
+### **Model Performance Comparison**
 
-   
-        Achieved an accuracy of approximately 97.75%
-        ROC AUC score of 0.998
-        Performance metrics indicate high precision, recall, and F1-score for both classes.
+| Model        | Best Hyperparameters                                                                 | Training Accuracy | Testing Accuracy | ROC AUC | PR AUC | Remarks                                    |
+|--------------|--------------------------------------------------------------------------------------|---------------------|------------------|---------|--------|--------------------------------------------|
+| **KNN**    | metric: Manhattan, n_neighbors: 9, weights: uniform                                | 80.51%             | 82.74%          | 0.852  | 0.919 | Moderate performance, sensitive to outliers |
+| **SVC**    | C: 1, gamma: auto                                                                   | 82.88%             | 83.93%          | 0.860  | 0.923 | Slightly better than KNN, still room for improvement |
+| **XGBoost**| colsample_bytree=1, gamma=0.1, learning_rate=0.1, max_depth=3, n_estimators=100, subsample=1 | 93.75%             | 90.48%          | 0.926  | 0.958 | Best overall performance, robust and reliable |
 
-    K-Nearest Neighbors (KNN):
+---
 
-   
-        Best parameters: n_neighbors=23, p=2, weights='uniform'
-        Accuracy of 96.63%
-        ROC AUC of 0.996
-
-    Decision Tree:
-
-   
-        Best parameters: criterion='entropy', max_depth=3, min_samples_leaf=4
-        Accuracy of 93.25%
-        ROC AUC of 0.944
-
-    Random Forest:
-
-   
-        Best parameters: n_estimators=200, max_features='log2', min_samples_leaf=2
-        Accuracy of 95.51%
-        ROC AUC of 0.993
-
-    XGBoost:
-
-   
-        Best parameters: n_estimators=100, max_depth=3, learning_rate=0.2
-        Accuracy of 96.63%
-        ROC AUC of 0.995
-
-5. Comparative Analysis
-All models demonstrated strong performance, with Logistic Regression and XGBoost yielding the highest accuracy and ROC AUC scores. The results indicate that these models are highly effective in distinguishing between benign and malignant tumors.
-
-6. Conclusion
-The project successfully implemented a comprehensive data exploration, preprocessing, and modeling pipeline for breast cancer classification. The models achieved high accuracy and ROC AUC scores, suggesting reliable predictive performance. Logistic Regression and XGBoost emerged as the top-performing algorithms, suitable for deployment in diagnostic support systems. Future work could involve feature importance analysis, ensemble methods, and validation on external datasets to further enhance model robustness.
+**Summary:**  
+The XGBoost model demonstrated the highest accuracy and AUC scores, making it the most effective for this classification problem. Its ability to generalize well suggests it is the preferred choice for deployment or further tuning.
