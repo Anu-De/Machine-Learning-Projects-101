@@ -1,3 +1,7 @@
+CodTech It solution Pvt.Ltd :
+Machine learning task 1
+Intern ID: CT04DN306
+
 Breast Cancer Dataset Overview
 
 The Breast Cancer dataset is a popular dataset used for binary classification tasks related to medical diagnosis. It contains features computed from digitized images of breast mass cell nuclei, with the goal of predicting whether a tumor is malignant or benign.
