@@ -1,73 +1,55 @@
-1. Libraries and Data Loading
+Project Report: Breast Cancer Classification
 
-    Loaded necessary Python libraries (e.g., pandas, numpy, matplotlib, seaborn, sklearn, xgboost).
-    Loaded the dataset into a DataFrame.
+1. Dataset Overview
+The dataset used in this project pertains to breast cancer diagnosis, with the primary target variable being diagnosis, categorized as B (Benign) and M (Malignant). The dataset comprised mostly numerical features, with the exception of the diagnosis label.
 
-2. Exploratory Data Analysis (EDA)
+2. Data Exploration and Preprocessing  
 
-    Examined dataset info, descriptive statistics (info(), describe()).
-    Checked for missing values, duplicated entries, correlations (corr()), unique values (nunique()), shape, and previewed the first few rows (head()).
-    Visualized feature distributions with histograms.
-    Identified potential outliers using box-and-whisker plots.
+    Initial Exploration: Conducted data exploration using isnull(), duplicated(), info(), describe(), and head() to understand data structure and identify missing values or duplicates.
+    Outlier Detection: Outliers were identified and removed using the Interquartile Range (IQR) method.
+    Skewness Handling: Checked skewness for numerical features; applied log transformation to correct skewness and validated the effectiveness post-transformation.
+    Feature Scaling: Transformed numerical columns using StandardScaler to normalize feature ranges.
 
-3. Data Preprocessing
+3. Model Training and Evaluation
+Four different classification algorithms were employed:
 
-    Applied feature scaling:
-        StandardScaler for numerical features.
-        Binary encoding for categorical variables.
-        One-hot encoding for categorical features.
-    Transformed data for modeling.
+    Logistic Regression:
 
-4. Train-Test Split
+   
+        Achieved an accuracy of approximately 97.75%
+        ROC AUC score of 0.998
+        Performance metrics indicate high precision, recall, and F1-score for both classes.
 
-    Split data into training and hold-out test sets (e.g., 80/20 split).
+    K-Nearest Neighbors (KNN):
 
-5. Model Training & Hyperparameter Tuning
+   
+        Best parameters: n_neighbors=23, p=2, weights='uniform'
+        Accuracy of 96.63%
+        ROC AUC of 0.996
 
-    Trained multiple models with hyperparameter tuning:
+    Decision Tree:
 
-    Linear Models:
-        Linear Regression
-        Ridge Regression
-        Lasso Regression
-        ElasticNet
+   
+        Best parameters: criterion='entropy', max_depth=3, min_samples_leaf=4
+        Accuracy of 93.25%
+        ROC AUC of 0.944
 
-    Tree-Based & Ensemble Models:
-        Decision Tree Regressor (max_depth=5, min_samples_leaf=1, min_samples_split=2)
-        Random Forest Regressor (max_depth=10, min_samples_leaf=4, min_samples_split=10, n_estimators=100)
-        Gradient Boosting Regressor (max_depth=3, min_samples_leaf=4, min_samples_split=2, n_estimators=100)
-        XGBoost Regressor (learning_rate=0.1, max_depth=3, min_child_weight=10, n_estimators=100)
-        K-Nearest Neighbors (n_neighbors=3, algorithm='brute', weights='distance')
-        Support Vector Regression (C=10, epsilon=0.1, gamma=0.1)
+    Random Forest:
 
-    Evaluated models on training data with metrics like MSE, MAE, RMSE, R².
+   
+        Best parameters: n_estimators=200, max_features='log2', min_samples_leaf=2
+        Accuracy of 95.51%
+        ROC AUC of 0.993
 
-    Selected best hyperparameters based on validation performance.
+    XGBoost:
 
-6. Model Evaluation
+   
+        Best parameters: n_estimators=100, max_depth=3, learning_rate=0.2
+        Accuracy of 96.63%
+        ROC AUC of 0.995
 
-    Assessed individual models' performance:
-        Notable results:
-            Gradient Boosting Regressor achieved an R² of approximately 0.82 on validation.
-            Random Forest and Decision Tree also performed well.
-            KNN and SVR had moderate performance.
-    Observed that models like Gradient Boosting and Random Forest had the best validation scores.
+5. Comparative Analysis
+All models demonstrated strong performance, with Logistic Regression and XGBoost yielding the highest accuracy and ROC AUC scores. The results indicate that these models are highly effective in distinguishing between benign and malignant tumors.
 
-7. Model Ensembling via Stacking
-
-    Created a stacking regressor combining the top-performing models:
-        Base estimators: Gradient Boosting, SVR
-        Meta-estimator: Linear Regression
-    Trained the stacking model on the training data.
-
-8. Final Performance on Test Set
-
-    Evaluated the stacking regressor on the hold-out test set.
-    Reported performance metrics:
-        MSE: 0.1582
-        MAE: 0.21
-        RMSE: 0.3978
-        R²: 0.82
-
-Conclusion:
-The stacking ensemble achieved excellent performance, explaining over 82% of the variance with low error metrics, indicating a robust and well-generalized model.
+6. Conclusion
+The project successfully implemented a comprehensive data exploration, preprocessing, and modeling pipeline for breast cancer classification. The models achieved high accuracy and ROC AUC scores, suggesting reliable predictive performance. Logistic Regression and XGBoost emerged as the top-performing algorithms, suitable for deployment in diagnostic support systems. Future work could involve feature importance analysis, ensemble methods, and validation on external datasets to further enhance model robustness.
